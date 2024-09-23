@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 
 
 @Entity
@@ -12,6 +13,7 @@ public class Unit {
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	@Size(max = 1000)
 	private String name;
 	
 	@OneToMany(mappedBy = "unit")
