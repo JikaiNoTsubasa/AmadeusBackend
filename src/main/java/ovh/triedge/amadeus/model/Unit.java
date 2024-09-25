@@ -3,37 +3,18 @@ package ovh.triedge.amadeus.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Unit")
-public class Unit {
+public class Unit extends AmaEntity{
 
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	@Size(max = 1000)
-	private String name;
 	
 	@OneToMany(mappedBy = "unit")
 	private List<Project> projects = new ArrayList<Project>();
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public List<Project> getProjects() {
 		return projects;

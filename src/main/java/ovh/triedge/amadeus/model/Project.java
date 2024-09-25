@@ -5,23 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Size;
 
-
-
 @Entity
-public class Project {
+public class Project extends AmaEntity{
 
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	@Size(max = 1000)
-	private String name;
 	@Size(max = 2000)
 	private String description;
 	private Timestamp creationDate;
@@ -33,14 +24,6 @@ public class Project {
 	
 	@Transient
 	private float progress;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getDescription() {
 		return description;
