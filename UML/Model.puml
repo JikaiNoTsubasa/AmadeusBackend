@@ -1,0 +1,56 @@
+@startuml Model
+
+class User{
+	- int id
+	- String email
+	- String password
+	- String displayName
+	- String iconPath
+}
+
+class AmaEntity{
+	- int id
+	- String name
+}
+
+class Unit{
+	- int id
+	- String name
+}
+
+class Project{
+	- String description
+	- Timestamp creationDate
+}
+
+class Task{
+}
+
+class Status{
+	- int id
+	- String name
+	- String description
+}
+
+class Category{
+	- int id
+	- String name
+}
+
+class Priority{
+	- int id
+	- String name
+}
+
+
+AmaEntity <|-- Project
+AmaEntity <|-- Task
+Unit *-- "projects 0..*" Project
+Project *-- "tasks 0..*" Task
+Task *-- "subTasks 0..*" Task
+AmaEntity o-- "responsibles 0..*" User
+AmaEntity o-- "status 1" Status
+AmaEntity o-- "priority 1" Priority
+AmaEntity o-- "categories 0..*" Category
+
+@enduml
