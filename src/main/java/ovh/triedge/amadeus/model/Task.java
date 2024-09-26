@@ -12,8 +12,10 @@ public class Task extends AmaEntity{
 
 	@ManyToOne
 	private Project project;
+	
 	@OneToMany(mappedBy = "parentTask")
 	private List<Task> subTasks = new ArrayList<Task>();
+	
 	@ManyToOne
 	private Task parentTask;
 	
