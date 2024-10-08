@@ -1,6 +1,7 @@
 package ovh.triedge.amadeus.model;
 
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,13 +10,14 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Size;
+import ovh.triedge.amadeus.dto.RequestCreateProject;
 
 @Entity
 public class Project extends AmaEntity{
 
 	@Size(max = 2000)
 	private String description;
-	private Timestamp creationDate;
+	private Timestamp creationDate = Timestamp.from(Instant.now());
 	@ManyToOne
 	private Unit unit;
 	
@@ -24,6 +26,15 @@ public class Project extends AmaEntity{
 	
 	@Transient
 	private float progress;
+	
+	public Project() {}
+	
+	public Project(RequestCreateProject request) {
+		setName(request.getName());
+		setDescription(request.getDescription());
+		if (request.getCreationDate() != null)
+			setCreationDate(request.getCreationDate());
+	}
 
 	public String getDescription() {
 		return description;

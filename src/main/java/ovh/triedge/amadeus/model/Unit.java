@@ -5,7 +5,6 @@ import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 
 @Entity
 public class Unit extends AmaEntity{
