@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ovh.triedge.amadeus.model.Project;
 import ovh.triedge.amadeus.model.Unit;
 
 @Service
@@ -28,5 +29,10 @@ public class UnitService {
 	
 	public void deleteById(Long id) {
 		unitRepository.deleteById(id);
+	}
+	
+	public List<Project> findProjectsByUnit(long id){
+		Optional<Unit> u = findById(id);
+		return u.get()==null?null:u.get().getProjects();
 	}
 }

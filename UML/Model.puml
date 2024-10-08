@@ -42,6 +42,10 @@ class Priority{
 	- String name
 }
 
+class User{
+	- int Id
+	- String name
+}
 
 AmaEntity <|-- Project
 AmaEntity <|-- Task
